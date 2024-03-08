@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
+const commentSchema = require("./Comment");
 
 const achievementSchema = new Schema({
   titleAchievement: {
@@ -22,23 +23,18 @@ const achievementSchema = new Schema({
     default: Date.now,
     get: function (date) {
       console.log(date);
-      return `${new Date(date).getDate()}/${new Date(date).getMonth()+1}/${new Date(date).getFullYear()}`;
+      return `${new Date(date).getDate()}/${
+        new Date(date).getMonth() + 1
+      }/${new Date(date).getFullYear()}`;
     },
   },
-  userID: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: '_id',
-    },
-  ],
-  comments: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "comment",
-    },
-  ],
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+  comments: [commentSchema],
 });
 
-const Achievement = model('Achievement', achievementSchema);
+const Achievement = model("Achievement", achievementSchema);
 
 module.exports = Achievement;

@@ -3,72 +3,88 @@
     "titleAchievement": "Completed Bootcamp",
     "body": "Got through three months of hard work with determination!",
     "createdAt": "1.23.23",
-    "userID": 1,
     "comments": [
-      "Congrats! Inspiring to hear you have the certification in hand."
+      {
+        "commentBody": "Congrats! Inspiring to hear you have the certification in hand.",
+        "username": "Bill"
+      }
     ]
   },
   {
     "titleAchievement": "Made Apple French toast",
     "body": "Such a new tasty recipe.",
     "createdAt": "1.23.23",
-    "userID": 2,
     "comments": [
-      "Sounds yummy. Will have to try myself soon."
+      {
+        "commentBody": "Sounds yummy. Will have to try myself soon.",
+        "username": "Bill"
+      }
     ]
   },
   {
     "titleAchievement": "Learned MERN and state",
     "body": "MERN was so worth learning, after I learned handlebars. State was more complicated.",
     "createdAt": "1.23.23",
-    "userID": 3,
     "comments": [
-      "MERN is definitely on my list to learn next. Thanks for the tip."
+      {
+        "commentBody": "MERN is definitely on my list to learn next. Thanks for the tip.",
+        "username": "Bill"
+      }
     ]
   },
   {
     "titleAchievement": "Finally got a cat",
     "body": "He's the best fru ball.",
     "createdAt": "1.23.23",
-    "userID": 4,
     "comments": [
-      "That's so cool. Happy to hear you have a fur companion. Need pics."
+      {
+        "commentBody": "That's so cool. Happy to hear you have a fur companion. Need pics.",
+        "username": "Bill"
+      }
     ]
   },
   {
     "titleAchievement": "Crossing off Puerto Rico my Bucket List",
     "body": "The tickets have been booked to go to Puerto Rico. It's offical. I;m traveling.",
     "createdAt": "1.23.23",
-    "userID": 5,
     "comments": [
-      "So great to hear. Bet it feels good to achieve your dreams."
+      {
+        "commentBody": "So great to hear. Bet it feels good to achieve your dreams.",
+        "username": "Bill"
+      }
     ]
   },
   {
     "titleAchievement": "Made gains at the gym",
     "body": "Finally got to lift more than I ever had done before, and more reps too.",
     "createdAt": "1.23.23",
-    "userID": 6,
     "comments": [
-      "See, hard work does pay off. Great job."
+      {
+        "commentBody": "See, hard work does pay off. Great job.",
+        "username": "Bill"
+      }
     ]
   },
   {
     "titleAchievement": "First 5K down, now to plan my 10k",
     "body": "Just ran my first 5k on Saturday, now I'm pumped to run my next run, a 10k.",
     "createdAt": "1.23.23",
-    "userID": 7,
     "comments": [
-      "Way to go! You got this."
+      {
+        "commentBody": "Way to go! You got this.",
+        "username": "Bill"
+      }
     ]
   },
   {
     "titleAchievement": "Found this tasty recipe",
     "body": "Last night I made these air fryer salmon bowls and it was just like I went out to eat.",
     "createdAt": "1.23.23",
-    "userID": 1,
     "comments": [
-      "Makes me hungry just thinking about it. Please send photos. Gotta recreate it."
+      {
+        "commentBody": "Makes me hungry just thinking about it. Please send photos. Gotta recreate it.",
+        "username": "Bill"
+      }
     ]
   }
 ]

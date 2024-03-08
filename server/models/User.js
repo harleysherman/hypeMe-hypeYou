@@ -4,6 +4,7 @@ const validateEmail = function (email) {
   const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
 };
+const commentSchema = require('./Comment.js');
 
 const userSchema = new Schema(
   {
@@ -29,29 +30,23 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
       minLength: 1,
       maxLength: 16,
     },
-    achievement: [
+    achievements: [
       {
         type: Schema.Types.ObjectId,
-        ref: "community",
+        ref: "Achievement",
       },
     ],
-    community: [
+    communities: [
       {
         type: Schema.Types.ObjectId,
-        ref: "community",
+        ref: "Community",
       },
     ],
-    comment: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "comment",
-      },
-    ],
+    comments: [commentSchema],
   },
   {
     toJSON: {

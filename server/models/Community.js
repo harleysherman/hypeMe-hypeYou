@@ -1,10 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const communitySchema = new Schema({
-  user: [
+  users: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'user',
+      ref: 'User',
     },
   ],
   category: {
