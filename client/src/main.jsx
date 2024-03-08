@@ -3,7 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import Timeline from "./pages/Timeline.jsx";
-
+import Signup from "./pages/Signup.jsx";
+import Login from "./pages/Login.jsx"
+import Profile from "./pages/Profile.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,18 +15,18 @@ const router = createBrowserRouter([
         index: true,
         element: <Timeline />,
       },
-      // {
-      //   path: "/login",
-      //   element: <Login />,
-      // },
-      // {
-      //   path: "/signup",
-      //   element: <Sign-Up />,
-      // },
-      // {
-      //   path: "/Profile",
-      //   element: <Profile />,
-      // },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/Profile",
+        element: <Profile />,
+      },
     ],
   },
 ]);
