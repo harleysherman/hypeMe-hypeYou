@@ -1,51 +1,28 @@
 import { Chrono } from "react-chrono";
 import Stack from "react-bootstrap/Stack";
 import { Form } from "react-bootstrap";
-import 
+import timelineArray from "../components/Content/timelineContent";
+import { useQuery } from '@apollo/client';
+import { QUERY_ACHIEVEMENTS } from "../utils/queries";
+
+
 export default function Timeline() {
-// stand in until there is data
-// timeline Content 
-    const achievement = [
-      {
-        title: "03/08/2024",
-        cardTitle: "Username",
-        cardSubtitle: "Achievement Title",
-        cardDetailedText: [
-          "This is my Achievement, This is what happened.",
-          "Likes : 0",
-        ],
 
-        //   media: {
-        //     type: "IMAGE",
-        //     source: {
-        //       url: "http://someurl/image.jpg"
-        //     }
-        //   }
-      },
-      {
-        title: "03/08/2024",
-        cardTitle: "Username",
-        cardSubtitle: "Achievement Title",
-        cardDetailedText: [
-          "This is my Achievement, This is what happened.",
-          "Likes : 0",
-        ],
+  // eslint-disable-next-line no-unused-vars
+  const {loading, data, error} = useQuery(QUERY_ACHIEVEMENTS)
+  if (error){
+    console.log(error)
+    return
+  }
+  const achievements = data?.achievement || []
 
-        //   media: {
-        //     type: "IMAGE",
-        //     source: {
-        //       url: "http://someurl/image.jpg"
-        //     }
-        //   }
-      },
-    ];
-
+  
 
 
     return (
       <Stack gap={3}>
-        <div style={{ width: "500px", height: "400px" }}>
-          <Chrono items={achievement} mode="VERTICAL" />
+        {/* <div style={{ width: "500px", height: "400px" }}>
+          <Chrono items={timelineArray(achievements)} mode="VERTICAL" />
         </div>
         <div>
           <Form.Label htmlFor="inputPost">Post your Achievement</Form.Label>
@@ -64,7 +41,7 @@ export default function Timeline() {
             muted
             placeholder=" Post your Achievement Here"
           ></Form.Text>
-        </div>
+        </div> */}
       </Stack>
     );
 }
