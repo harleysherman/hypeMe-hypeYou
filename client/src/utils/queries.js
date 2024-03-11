@@ -2,14 +2,21 @@ import { gql } from "@apollo/client";
 
 export const QUERY_ACHIEVEMENTS = gql`
   query getAchievements {
-    achievement {
+    achievements {
       _id
       titleAchievement
       body
-      username
+      createdAt
+      user {
+        _id
+        username
+        email
+      }
       comments {
+        _id
         commentBody
         username
+        createdAt
       }
     }
   }
