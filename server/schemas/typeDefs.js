@@ -1,35 +1,35 @@
 const typeDefs = `
 type User {
-    id: ID!
-    userName: String
+    _id: ID!
+    username: String
     email: String!
     password: String
-    achievements: [achievement]
+    achievements: [Achievement]
     communities: [Community]
     comments: [Comment]
   }
 
 type Community {
-    id: ID!
+    _id: ID!
     communityName: String
     users: [User]
   }
 
 
 type Achievement {
-    id: ID!
+    _id: ID!
     titleAchievement: String!
     body: String!
-    createdAt: Date
-    users: [User]
+    createdAt: String
+    user: User
     comments: [Comment]
   }
 
 type Comment{
-    id: ID
+    _id: ID
     commentBody: String!
-    user: [User]
-    createdAt: Date
+    username: String
+    createdAt: String
 
   }
 
@@ -42,18 +42,16 @@ type Comment{
     users: [User] 
     communities: [Community]
     achievements: [Achievement]
-    comments: [Comment]
-    user(userName: String!): User
-    achievements(userName: String!): [Achievement]
-    comments(: String!): [Comments]
-
+    user(username: String!): User
+    achievement(username: String!): Achievement
   }
 
-  type Mutations{
+  type Mutation{
     addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     addCommunity(communityName: String!): Community
     addAchievement(userId: ID!, titleAcheivement: String!): Achievement
-    addComment(achievementId: ID!, commentBody: String!): Achievement
+    addComment(achievementId: ID!, commentBody: String!, username: String!): Achievement
     removeAchievement(achievementId: ID!): Achievement
     removeComment(commentId: ID, achievementId: ID): Achievement
   }
