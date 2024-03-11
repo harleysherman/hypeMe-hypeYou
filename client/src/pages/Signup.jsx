@@ -44,6 +44,13 @@ export default function Signup(){
               <Form.Control type="password" placeholder="Password" />
             </Col>
           </Form.Group>
+          <button
+                  className="btn btn-block btn-primary"
+                  style={{ cursor: 'pointer' }}
+                  type="submit"
+                >
+                  Submit
+                </button>
         </Form>
       </Container>
     );
