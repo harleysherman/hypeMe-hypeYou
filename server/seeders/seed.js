@@ -16,34 +16,27 @@ db.once("open", async () => {
 
     const users = await User.create(userSeeds);
     const achievements = achievementSeeds.map((achievement) => ({
-      ...achievement,
-      user: users[Math.floor(Math.random() * (users.length - 1))]._id,
-    }));
+      ...achievement, 
+      user: users[Math.floor(Math.random() * (users.length - 1))]._id
+    }))
 
     const newAchievements = await Achievement.create(achievements);
 
-    const filteredUsers = users.map((user) =>
-      newAchievements
-        .filter((achievement) => (achievement.user == user._id ? true : false))
-        .map((achievement) => achievement._id)
+    const filteredUsers = users.map( (user) => newAchievements
+      .filter((achievement) => achievement.user == user._id ? true : false)
+      .map((achievement) => achievement._id )
     );
 
     console.log(filteredUsers);
 
-    const noEmpties = filteredUsers.filter((arr) => arr.length);
-
     for (let i = 0; i < users.length; i++) {
       const user = users[i];
-      await User.findOneAndUpdate(
-        { _id: user._id },
-        { achievements: noEmpties[i] },
-        { new: true }
-      );
+      await User.findOneAndUpdate({_id: user._id}, { achievements: filteredUsers[i]}, { new: true })
     }
+    
+    // console.log("noeEmpties ---------------> ", noEmpties);
 
-    console.log("noeEmpties ---------------> ", noEmpties);
-
-    // await Community.create(communitySeeds);
+    await Community.create(communitySeeds);
 
     // console.log("all done!");
     process.exit(0);
