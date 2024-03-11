@@ -21,6 +21,7 @@ export const QUERY_ACHIEVEMENTS = gql`
       _id
       titleAchievement
       body
+      username
       comments {
         commentBody
         username
@@ -35,6 +36,7 @@ export const QUERY_SINGLE_ACHIEVEMENT = gql`
       _id
       titleAchievement
       body
+      username
       comments {
         commentBody
         username
