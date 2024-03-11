@@ -15,76 +15,28 @@ db.once("open", async () => {
     await Community.deleteMany();
 
     const users = await User.create(userSeeds);
-
-    // const achievements = achievementSeeds.map(async (achievement) => {
-    //   return await Achievement.create({
-    //     ...achievement,
-    //     user: users[Math.floor(Math.random() * (users.length - 1))]._id,
-    //   });
-    // });
     const achievements = achievementSeeds.map((achievement) => ({
       ...achievement, 
       user: users[Math.floor(Math.random() * (users.length - 1))]._id
     }))
-    // console.log("achievements ", achievements);
+
     const newAchievements = await Achievement.create(achievements);
-    // console.log(newAchievements);
 
-    users.map(async (user) => {
-      // console.log("filter ", newAchievements
-      //   .filter((achievement) => {
-      //     // console.log("This is is achievement in filter ", achievement);
-      //     // console.log("user ", user);
-      //     return achievement.user == user._id ? true : false
-      //   })
-      //   .map((achievement) => {
-      //     // console.log("This is is achievement in map ", achievement);
-      //     return achievement._id;
-      //   })
-        // );
-        const temp = newAchievements
-        .filter((achievement) => {
-          // console.log("This is is achievement in filter ", achievement);
-          // console.log("user ", user);
-          return achievement.user == user._id ? true : false
-        })
-        .map((achievement) => {
-          // console.log("This is is achievement in map ", achievement);
-          return achievement._id;
-        });
-        if (temp) {
-          return await User.findOneAndUpdate({
-            _id: user._id,
-          },
-          {
-            achievements: temp,
-          },
-          {
-            new: true
-          })
-        }
-      // return await User.findOneAndUpdate(
-      //   {
-      //     _id: user._id,
-      //   },
-      //   {
-      //     achievements: newAchievements
-      //       .filter(async (achievement) => {
-      //         // console.log("This is is achievement in filter ", achievement);
-      //         return await achievement.user == user._id;
-      //       })
-      //       .map((achievement) => {
-      //         // console.log("This is is achievement in map ", achievement);
-      //         return achievement._id;
-      //       }),
-      //   },
-      //   {
-      //     new: true,
-      //   }
-      // );
-    });
+    const filteredUsers = users.map( (user) => newAchievements
+      .filter((achievement) => achievement.user == user._id ? true : false)
+      .map((achievement) => achievement._id )
+    );
 
-    // await Community.create(communitySeeds);
+    console.log(filteredUsers);
+
+    for (let i = 0; i < users.length; i++) {
+      const user = users[i];
+      await User.findOneAndUpdate({_id: user._id}, { achievements: filteredUsers[i]}, { new: true })
+    }
+    
+    // console.log("noeEmpties ---------------> ", noEmpties);
+
+    await Community.create(communitySeeds);
 
     // console.log("all done!");
     process.exit(0);
