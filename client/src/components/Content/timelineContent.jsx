@@ -1,27 +1,22 @@
-import {Link} from 'react-router-dom';
-import { Stack } from 'react-bootstrap';
+import { Stack } from "react-bootstrap";
+import { v4 as uuidv4 } from 'uuid';
 
+const timelineArray = (achievements) => {
+  return achievements.map((achievement) => ({
+    title: achievement.createdAt,
+    cardTitle: achievement.username,
+    cardSubtitle: achievement.achievementTitle,
+    timelineContent: (
+      <Stack>
+        <div>{achievement.body}</div>
+        <div>
+          {achievement.comments.map((comment) => (
+            <p key={uuidv4()}>{comment}</p>
+          ))}
+        </div>
+      </Stack>
+    ),
+  }));
+};
 
- const achievement = [
-      {
-        title: {Date},
-        cardTitle: {username},
-        cardSubtitle: {"Achievement Title"},
-        timelineContent: [
-            <Stack>
-                <div>
-                {achievement Body}
-                </div>
-               
-                <div>
-                 {/* comment form */}
-                </div>
-            </Stack>
-        ],
-    }]
-
-
-
-const timelineData = ({
-
-})
+export default timelineArray;
