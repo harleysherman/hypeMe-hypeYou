@@ -16,7 +16,7 @@ export const QUERY_ACHIEVEMENTS = gql`
 `;
 
 export const QUERY_SINGLE_ACHIEVEMENT = gql`
-  query getSingleThought($achievementId: ID!) {
+  query getSingleAchievement($achievementId: ID!) {
     achievement(achievementId: $achievementId) {
       _id
       titleAchievement
