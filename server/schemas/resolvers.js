@@ -12,7 +12,7 @@ const resolvers = {
       // populate achievements?
     },
     achievements: async () => {
-      return await Achievement.find({}).populate("comments").populate('user')
+      return await Achievement.find({}).populate("comments").populate("user");
     },
     // comments: async () => {
     //   return await Comment.find({});
@@ -45,10 +45,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addCommunity: async (parent, { communityName }, context) => {
-      if (context.user) {
+    addCommunity: async (parent, { category }, context) => {
+      if (!context.user) {
         const addedCommunity = await Community.create({
-          communityName,
+          category,
         });
 
         return addedCommunity;
@@ -75,7 +75,7 @@ const resolvers = {
           { _id: achievementId },
           {
             $addToSet: {
-              comments: commentBody,
+              comment: commentBody,
             },
           },
           {
@@ -100,6 +100,22 @@ const resolvers = {
           }
         );
         return Achievement;
+      }
+      throw AuthenticationError;
+    },
+    removeComment: async (_, { commentId, achievementId }, context) => {
+      if (context.user) {
+        return Achievement.findOneAndUpdate(
+          { _id: achievementId },
+          {
+            $pull: {
+              comment: {
+                _id: commentId,
+              },
+            },
+          },
+          { new: true }
+        );
       }
       throw AuthenticationError;
     },

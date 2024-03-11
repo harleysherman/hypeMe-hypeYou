@@ -11,7 +11,7 @@ type User {
 
 type Community {
     _id: ID!
-    communityName: String
+    category: String!
     users: [User]
   }
 
@@ -49,7 +49,7 @@ type Comment{
   type Mutation{
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addCommunity(communityName: String!): Community
+    addCommunity(category: String!): Community
     addAchievement(userId: ID!, titleAcheivement: String!): Achievement
     addComment(achievementId: ID!, commentBody: String!, username: String!): Achievement
     removeAchievement(achievementId: ID!): Achievement
