@@ -23,8 +23,9 @@ console.log(userParam)
 
   if (error) return console.log(error);
   return (
-    <div>
-      <h3 className="justify-content-start">{profile.username}</h3>
+    
+    <div className="full-viewport">
+      <h3 className="profile-username">{profile.username}</h3>
       {profileContent(profile)}
     </div>
   );
