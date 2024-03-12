@@ -2,8 +2,8 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import CommentList from '../components/CommentList/index';
-import CommentForm from '../components/CommentForm/index';
+import CommentList from '../components/CommentList/CommentList';
+import CommentForm from '../components/CommentForm/CommentForm';
 
 import { QUERY_SINGLE_ACHIEVEMENT } from '../utils/queries';
 
@@ -24,7 +24,7 @@ const SingleAchievement = () => {
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
-        {achievement.username} <br />
+        {achievement.user.username} <br />
         <span style={{ fontSize: '1rem' }}>
           had this achievement on {achievement.createdAt}
         </span>
@@ -39,8 +39,9 @@ const SingleAchievement = () => {
             lineHeight: '1.5',
           }}
         >
-          {achievement.thoughtText}
+          {achievement.titleAchievement}
         </blockquote>
+        <h3>{ achievement.body }</h3>
       </div>
 
       <div className="my-5">

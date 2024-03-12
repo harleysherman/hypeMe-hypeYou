@@ -1,11 +1,12 @@
 import { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_COMMENT } from '../../utils/mutations';
 
-// import Auth from '../../utils/auth';
+import Auth from '../../utils/auth';
 
+// eslint-disable-next-line react/prop-types
 const CommentForm = ({ achievementId }) => {
   const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
@@ -19,8 +20,8 @@ const CommentForm = ({ achievementId }) => {
       const { data } = await addComment({
         variables: {
           achievementId,
-          commentText,
-          username
+          commentBody: commentText,
+          username: Auth.getProfile().data.username
         },
       });
 
@@ -43,7 +44,7 @@ const CommentForm = ({ achievementId }) => {
     <div>
       <h4>What are your comments on this achievement?</h4>
 
-      {/* {Auth.loggedIn() ? ( */}
+      {Auth.loggedIn() ? (
         <>
           <p
             className={`m-0 ${
@@ -75,12 +76,12 @@ const CommentForm = ({ achievementId }) => {
             </div>
           </form>
         </>
-      {/* ) : (
+       ) : (
         <p>
           You need to be logged in to share your thoughts. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
-      )} */}
+      )}
     </div>
   );
 };

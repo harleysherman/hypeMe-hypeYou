@@ -4,7 +4,7 @@ class Authentication {
     getProfile(){
         return decode(this.getToken());
     }
-    LoggedIn(){
+    loggedIn(){
         const token =this.getToken();
         return token && !this.isTokenExpired(token)?true:false;
     }

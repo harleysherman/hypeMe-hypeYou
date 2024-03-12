@@ -14,6 +14,9 @@ const resolvers = {
     achievements: async () => {
       return await Achievement.find({}).populate("comments").populate("user");
     },
+    achievement: async ( parent, { achievementId }) => {
+      return await Achievement.findOne({ _id: achievementId }).populate("comments").populate("user");
+    },
     // comments: async () => {
     //   return await Comment.find({});
     // },
@@ -78,13 +81,16 @@ const resolvers = {
       // }
       // throw AuthenticationError;
     },
-    addComment: async (_, { achievementId, commentBody }, context) => {
+    addComment: async (_, { achievementId, commentBody, username }, context) => {
       if (context.user) {
         return Achievement.findOneAndUpdate(
           { _id: achievementId },
           {
             $addToSet: {
-              comment: commentBody,
+              comments: {
+                commentBody, 
+                username
+              }
             },
           },
           {

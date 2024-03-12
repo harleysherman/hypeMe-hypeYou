@@ -40,12 +40,32 @@ export const ADD_ACHIEVEMENT = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($achievementId: ID!, $commentText: String!) {
-    addComment(achievementId: $achievementId, commentText: $commentText) {
+  mutation addComment(
+    $achievementId: ID!
+    $commentBody: String!
+    $username: String!
+  ) {
+    addComment(
+      achievementId: $achievementId
+      commentBody: $commentBody
+      username: $username
+    ) {
       _id
-      commentBody
-      username
+      titleAchievement
+      body
       createdAt
+      url
+      user {
+        _id
+        username
+        profilePic
+      }
+      comments {
+        _id
+        commentBody
+        username
+        createdAt
+      }
     }
   }
 `;

@@ -10,12 +10,12 @@ export default function Profile() {
     variables: { username: userParam},
   });
   
-console.log(userParam)
+console.log(userParam);
 
 
   const profile = data?.me || data?.user || {};
 
-  if (Authentication.LoggedIn() && Authentication.getProfile().data.username === userParam){
+  if (Authentication.loggedIn() && Authentication.getProfile().data.username === userParam){
     return <Navigate to="/me" />;
   }
   console.log(profile);

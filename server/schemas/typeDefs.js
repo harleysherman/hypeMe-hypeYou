@@ -44,7 +44,7 @@ type Comment{
     communities: [Community]
     achievements: [Achievement]
     user(username: String!): User
-    achievement(username: String!): Achievement
+    achievement(achievementId: ID!): Achievement
     me: User
   }
 

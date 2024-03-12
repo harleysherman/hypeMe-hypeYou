@@ -1,5 +1,6 @@
-
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+
 const profileContent = (profile) => {
   if (!profile) {
     return <h4>No Profile associated with this username</h4>;
@@ -14,7 +15,10 @@ const profileContent = (profile) => {
           {achievement.createdAt}
         </Card.Subtitle>
         <Card.Text>{achievement.body}</Card.Text>
-        <Card.Link href="#">View Conversation About this Achievement</Card.Link>
+        <Link to={`/achievement/${ achievement._id }`}>
+          <Card.Link >View Conversation About this Achievement</Card.Link>
+        </Link>
+        
       </Card.Body>
     </Card>
   ));
