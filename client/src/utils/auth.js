@@ -20,7 +20,7 @@ class Authentication {
     }
 
     getToken() { 
-        return localStorage.getITem('id_token')
+        return localStorage.getItem('id_token')
     }
 
     login(idJWT) {

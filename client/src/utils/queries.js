@@ -55,3 +55,19 @@ export const QUERY_PROFILE = gql`
     }
   }
 `;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      achievements {
+        _id
+        titleAchievement
+        body
+        createdAt
+      }
+    }
+  }
+`;

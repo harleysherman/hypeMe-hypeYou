@@ -20,6 +20,13 @@ const resolvers = {
     user: async (parent, { username }) => {
       return await User.findOne({ username }).populate("achievements");
     },
+    me: async (parent, args, context) => {
+      console.log(context);
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate("achievements");
+      }
+      throw AuthenticationError;
+    },
   },
 
   Mutation: {
@@ -60,7 +67,7 @@ const resolvers = {
         const addedAchievement = await Achievement.create({
           titleAchievement,
           user: context.user._id,
-          body
+          body,
         });
         await User.findOneAndUpdate(
           { _id: context.user._id },
