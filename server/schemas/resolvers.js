@@ -55,11 +55,12 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addAchievement: async (_, { userID, titleAchievement }, context) => {
+    addAchievement: async (_, { userID, titleAchievement, body }, context) => {
       if (context.user) {
         const addedAchievement = await Achievement.create({
           titleAchievement,
           user: context.user._id,
+          body
         });
         await User.findOneAndUpdate(
           { _id: context.user._id },

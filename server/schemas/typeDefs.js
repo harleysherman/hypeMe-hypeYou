@@ -50,7 +50,7 @@ type Comment{
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addCommunity(category: String!): Community
-    addAchievement(userId: ID!, titleAcheivement: String!): Achievement
+    addAchievement(userId: ID!, titleAchievement: String!, body: String!): Achievement
     addComment(achievementId: ID!, commentBody: String!, username: String!): Achievement
     removeAchievement(achievementId: ID!): Achievement
     removeComment(commentId: ID, achievementId: ID): Achievement

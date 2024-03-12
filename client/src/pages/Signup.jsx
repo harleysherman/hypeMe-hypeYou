@@ -7,10 +7,6 @@ import { Container } from "react-bootstrap";
 
 export default function Signup(){
     // set use state and use mutation to fit what we have on backend
-  
-
-
-
 
     return (
       <Container>
@@ -49,7 +45,7 @@ export default function Signup(){
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
-                  Submit
+                  Signup
                 </button>
         </Form>
       </Container>
