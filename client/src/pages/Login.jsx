@@ -1,5 +1,3 @@
-
-
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -9,7 +7,6 @@ export default function Login() {
 
   return (
     <Form>
-
       <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
         <Form.Label column sm="2">
           Email
@@ -27,6 +24,13 @@ export default function Login() {
           <Form.Control type="password" placeholder="Password" />
         </Col>
       </Form.Group>
+      <button
+        className="btn btn-block btn-primary"
+        style={{ cursor: "pointer" }}
+        type="submit"
+      >
+        Login
+      </button>
     </Form>
   );
 }

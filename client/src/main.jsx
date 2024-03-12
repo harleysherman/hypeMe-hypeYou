@@ -6,10 +6,13 @@ import Timeline from "./pages/Timeline.jsx";
 import Signup from "./pages/Signup.jsx";
 import Login from "./pages/Login.jsx"
 import Profile from "./pages/Profile.jsx";
+import Error from './pages/Error.jsx';
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         index: true,

@@ -41,7 +41,8 @@ export const ADD_ACHIEVEMENT = gql`
       _id
       titleAchievement
       body
-      username
+      createdAt
+      user
       comments {
         commentBody
         username
