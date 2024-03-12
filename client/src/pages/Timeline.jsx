@@ -1,10 +1,11 @@
 import { Chrono } from "react-chrono";
 import Stack from "react-bootstrap/Stack";
-import { Form } from "react-bootstrap";
+// import { Form } from "react-bootstrap";
 import timelineArray from "../components/Content/timelineContent";
 import { useQuery } from "@apollo/client";
 import { QUERY_ACHIEVEMENTS } from "../utils/queries";
 import { useState, useEffect } from "react";
+import AchievementForm from "../components/form/postForm";
 
 export default function Timeline() {
   // eslint-disable-next-line no-unused-vars
@@ -35,7 +36,8 @@ export default function Timeline() {
       <div style={{ width: "500px", height: "400px" }}>
         {achievementList ? <Chrono items={items} mode="VERTICAL" /> : ""}
       </div>
-      <div>
+      <AchievementForm />
+      {/* <div>
         <Form.Label htmlFor="inputPost">Post your Achievement</Form.Label>
         <Form.Control
           type="Input"
@@ -52,7 +54,7 @@ export default function Timeline() {
           muted
           placeholder=" Post your Achievement Here"
         ></Form.Text>
-      </div>
+      </div> */}
     </Stack>
   );
 }
