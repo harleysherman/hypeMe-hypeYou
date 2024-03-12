@@ -1,15 +1,31 @@
 import profileContent from "../components/Content/profileContent";
 import {useQuery} from '@apollo/client'
-import { QUERY_PROFILE } from "../utils/queries";
+import { QUERY_PROFILE, QUERY_ME } from "../utils/queries";
+import { Navigate, useParams } from "react-router-dom";
+import Authentication from '../utils/auth'
 
-export default function Profile(){
+export default function Profile() {
+    const { username: userParam } = useParams();
+  const { loading, data, error } = useQuery(userParam ? QUERY_PROFILE : QUERY_ME, {
+    variables: { username: userParam},
+  });
+  
+console.log(userParam)
 
-// eslint-disable-next-line no-unused-vars
-const {loading, data} = useQuery(QUERY_PROFILE)
 
-const profile = data?.profile || {}
+  const profile = data?.me || data?.user || {};
 
-    return (
-profileContent(profile)
-    );
+  if (Authentication.LoggedIn() && Authentication.getProfile().data.username === userParam){
+    return <Navigate to="/me" />;
+  }
+  console.log(profile);
+  if (loading) return <p>Loading...</p>;
+
+  if (error) return console.log(error);
+  return (
+    <div>
+      <h3 className="justify-content-start">{profile.username}</h3>
+      {profileContent(profile)}
+    </div>
+  );
 }

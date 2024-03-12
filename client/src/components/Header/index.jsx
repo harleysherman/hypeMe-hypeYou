@@ -50,7 +50,7 @@ const Header = () => {
               <Nav.Link>
                 {" "}
                 <Link
-                  to="/profile"
+                  to="/profile/me"
                   className={
                     currentPage === "/profile" ? "nav-link active" : "nav-link"
                   }

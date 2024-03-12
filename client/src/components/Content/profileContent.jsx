@@ -1,23 +1,23 @@
-import { v4 as uuidv4 } from 'uuid';
+
+import Card from "react-bootstrap/Card";
 const profileContent = (profile) => {
   if (!profile) {
     return <h4>No Profile associated with this username</h4>;
   }
-
-  return (
-    <div>
-      <h2>{profile.username}</h2>
-      {profile.achievements.map((achievement) => (
-        <div key={uuidv4()}>
-          <div>{achievement.titleAchievement}</div>
-          <div>{achievement.body}</div>
-          {achievement.comments.map((comment) => (
-            <p key={uuidv4()}>{comment}</p>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
+  console.log(profile);
+  return profile.achievements.map((achievement) => (
+    // eslint-disable-next-line react/jsx-key
+    <Card style={{ width: "38rem" }}>
+      <Card.Body>
+        <Card.Title>{achievement.titleAchievement}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">
+          {achievement.createdAt}
+        </Card.Subtitle>
+        <Card.Text>{achievement.body}</Card.Text>
+        <Card.Link href="#">View Conversation About this Achievement</Card.Link>
+      </Card.Body>
+    </Card>
+  ));
 };
 
 export default profileContent;
