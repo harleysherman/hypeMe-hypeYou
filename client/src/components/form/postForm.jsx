@@ -11,6 +11,7 @@ import CloudinaryUploadWidget from "../CloudinaryUploadWidget/CloudinaryUploadWi
 // import Auth from "../../utils/auth";
 
 const AchievementForm = () => {
+  const [titleAchievement, setTitleAchievement] = useState("");
   const [achievementText, setAchievementText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -23,9 +24,8 @@ const AchievementForm = () => {
       // eslint-disable-next-line no-unused-vars
       const { data } = await addAchievement({
         variables: {
-          title: achievementText.titleAchievement,
-          body: achievementText.body,
-          achievementAuthor: "", //Auth.getProfile().data.username,
+          titleAchievement,
+          body: achievementText,
         },
       });
 
@@ -41,6 +41,8 @@ const AchievementForm = () => {
     if (name === "achievementText" && value.length <= 280) {
       setAchievementText(value);
       setCharacterCount(value.length);
+    } else if (name === "titleAchievement") {
+      setTitleAchievement(value);
     }
   };
 
@@ -68,11 +70,21 @@ const AchievementForm = () => {
           className="flex-row justify-center justify-space-between-md align-center"
           onSubmit={handleFormSubmit}
         >
+           <div className="col-12 col-lg-9">
+            <input
+              name="titleAchievement"
+              placeholder="Add your achievement: "
+              value={ titleAchievement }
+              className="form-input w-100"
+              style={{ lineHeight: "1.5", resize: "vertical" }}
+              onChange={handleChange}
+            ></input>
+          </div>
           <div className="col-12 col-lg-9">
             <textarea
               name="achievementText"
               placeholder="Add your achievement: "
-              value={achievementText}
+              value={ achievementText }
               className="form-input w-100"
               style={{ lineHeight: "1.5", resize: "vertical" }}
               onChange={handleChange}

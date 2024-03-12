@@ -55,20 +55,22 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addAchievement: async (_, { userID, titleAchievement, body }, context) => {
-      if (context.user) {
+    addAchievement: async (_, { titleAchievement, body }, context) => {
+      // if (context.user) {
         const addedAchievement = await Achievement.create({
           titleAchievement,
-          user: context.user._id,
-          body
+          // user: context.user._id,
+          user: "65ef5bca1cfc09f7bd371739",
+          body,
         });
         await User.findOneAndUpdate(
-          { _id: context.user._id },
+          // { _id: context.user._id },
+          {_id: "65ef5bca1cfc09f7bd371739" },
           { $addToSet: { achievements: addedAchievement._id } }
         );
         return addedAchievement;
-      }
-      throw AuthenticationError;
+      // }
+      // throw AuthenticationError;
     },
     addComment: async (_, { achievementId, commentBody }, context) => {
       if (context.user) {
@@ -119,6 +121,27 @@ const resolvers = {
         );
       }
       throw AuthenticationError;
+    },
+    addProfilePic: async (_, { profilePic }, context) => {
+      //if (context.user) {
+        return User.findOneAndUpdate(
+          //{ _id: context.user._id },
+          { _id: "65ef5bca1cfc09f7bd371734" },
+          { profilePic },
+          { new: true }
+        );
+      //}
+      //throw AuthenticationError;
+    },
+    addAchievementPhoto: async (_, { achievementId, url }, context) => {
+      //if (context.user) {
+        return Achievement.findOneAndUpdate(
+          { _id: achievementId },
+          { url },
+          { new: true }
+        );
+      //}
+      //throw AuthenticationError;
     },
   },
 };

@@ -49,6 +49,10 @@ const userSchema = new Schema(
       },
     ],
     comments: [commentSchema],
+    profilePic: {
+      type: String,
+      trim: true,
+    }
   },
   {
     toJSON: {

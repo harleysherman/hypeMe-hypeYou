@@ -7,6 +7,7 @@ import Signup from "./pages/Signup.jsx";
 import Login from "./pages/Login.jsx"
 import Profile from "./pages/Profile.jsx";
 import Error from './pages/Error.jsx';
+import Achievement from './pages/Achievement.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/Profile",
         element: <Profile />,
+      },
+      {
+        path: "/achievement/:achievementId",
+        element: <Achievement />,
       },
     ],
   },

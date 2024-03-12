@@ -7,6 +7,7 @@ type User {
     achievements: [Achievement]
     communities: [Community]
     comments: [Comment]
+    profilePic: String
   }
 
 type Community {
@@ -23,6 +24,7 @@ type Achievement {
     createdAt: String
     user: User
     comments: [Comment]
+    url: String
   }
 
 type Comment{
@@ -30,7 +32,6 @@ type Comment{
     commentBody: String!
     username: String
     createdAt: String
-
   }
 
   type Auth {
@@ -47,13 +48,15 @@ type Comment{
   }
 
   type Mutation{
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, profilePic: String): Auth
     login(email: String!, password: String!): Auth
     addCommunity(category: String!): Community
-    addAchievement(userId: ID!, titleAchievement: String!, body: String!): Achievement
+    addAchievement(titleAchievement: String!, body: String!, url: String): Achievement
     addComment(achievementId: ID!, commentBody: String!, username: String!): Achievement
     removeAchievement(achievementId: ID!): Achievement
     removeComment(commentId: ID, achievementId: ID): Achievement
+    addProfilePic(profilePic: String): User
+    addAchievementPhoto(achievementId: ID!, url: String): Achievement
   }
 `;
 
