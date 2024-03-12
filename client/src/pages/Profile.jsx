@@ -1,11 +1,11 @@
 import profileContent from "../components/Content/profileContent";
 import {useQuery} from '@apollo/client'
 import { QUERY_PROFILE } from "../utils/queries";
-
+import { useParams } from "react-router-dom";
 export default function Profile() {
-  const name = "coolKat34";
+    const { username } = useParams();
   const { loading, data, error } = useQuery(QUERY_PROFILE, {
-    variables: { username: name },
+    variables: { username: username },
   });
 
 

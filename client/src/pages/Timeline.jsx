@@ -1,7 +1,8 @@
 import { Chrono } from "react-chrono";
 import Stack from "react-bootstrap/Stack";
-import { Form } from "react-bootstrap";
-import timelineArray from "../components/Content/timelineContent";
+import { Button, Form } from "react-bootstrap";
+// import timelineArray from "../components/Content/timelineContent";
+
 import { useQuery } from "@apollo/client";
 import { QUERY_ACHIEVEMENTS } from "../utils/queries";
 // import { useState, useEffect } from "react";
@@ -9,6 +10,7 @@ import { QUERY_ACHIEVEMENTS } from "../utils/queries";
 export default function Timeline() {
   // eslint-disable-next-line no-unused-vars
   const { loading, data, error } = useQuery(QUERY_ACHIEVEMENTS);
+ 
   // const [achievementList, setAchievements] = useState([]);
   if (error) {
     console.log(error);
@@ -21,6 +23,24 @@ export default function Timeline() {
 
   // console.log(achievements);
   // console.log(timelineArray(achievements));
+  const timelineArray = (achievements) => {
+    console.log(achievements);
+
+   
+    return achievements.map((achievement) => ({
+      title: achievement.createdAt,
+      cardTitle: achievement.user.username,
+      url: `/profile/${achievement.user.username}`,
+      timelineContent: (
+        <>
+          {/* <Link> */}
+          <h5>{achievement.titleAchievement}</h5>
+          <p>{achievement.body}</p>
+          {/* </Link> */}
+        </>
+      ),
+    }));
+  };
   const items = timelineArray(achievements);
   console.log(items);
   // useEffect(()=>{

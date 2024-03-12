@@ -1,25 +1,27 @@
 // import { Stack } from "react-bootstrap";
 // import { v4 as uuidv4 } from "uuid";
+import { Link, useNavigate } from "react-router-dom";
 
 const timelineArray = (achievements) => {
   console.log(achievements);
+  // const navigate = useNavigate();
+  const achieveNav = (username) => {
+    navigate(`/profile/${username}`)
+  }
   return achievements.map((achievement) => ({
     title: achievement.createdAt,
-    cardTitle: achievement.titleAchievement,
-    cardSubtitle: achievement.user.username,
-
-    cardDetailedText: achievement.body,
-    // timelineContent: (
-    //   <Stack>
-    //     <div>{achievement.body}</div>
-    //     <div>
-    //       {achievement.comments.map((comment) => (
-    //         <p key={uuidv4()}>{comment}</p>
-    //       ))}
-    //     </div>
-    //   </Stack>
-    // ),
+    url: `/profile/${achievement.user.username}`,
+    timelineContent: (
+      <>
+        <Link to={`/profile/${achievement.user.username}`}>
+         {achievement.user.username}
+        </Link>
+        {/* <Link> */}
+        <h5>{achievement.titleAchievement}</h5>
+        <p>{achievement.body}</p>
+        {/* </Link> */}
+      </>
+    ),
   }));
 };
-
 export default timelineArray;
