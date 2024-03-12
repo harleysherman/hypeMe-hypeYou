@@ -25,12 +25,14 @@ export default function Timeline() {
   // console.log(timelineArray(achievements));
   const timelineArray = (achievements) => {
     console.log(achievements);
-
+    if(!achievements) {
+      return;
+    }
    
     return achievements.map((achievement) => ({
       title: achievement.createdAt,
-      cardTitle: achievement.user.username,
-      url: `/profile/${achievement.user.username}`,
+      cardTitle: achievement.user.username || "",
+      url: `/profile/${achievement.user.username || ""}`,
       timelineContent: (
         <>
           {/* <Link> */}
@@ -42,7 +44,7 @@ export default function Timeline() {
     }));
   };
   const items = timelineArray(achievements);
-  console.log(items);
+  // console.log(items);
   // useEffect(()=>{
   //   if(achievements){
   //   setAchievements(achievements)

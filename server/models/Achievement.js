@@ -5,7 +5,6 @@ const achievementSchema = new Schema({
   titleAchievement: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     minLength: 1,
     maxLength: 280,
@@ -13,7 +12,6 @@ const achievementSchema = new Schema({
   body: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     minLength: 1,
     maxLength: 280,
@@ -33,6 +31,10 @@ const achievementSchema = new Schema({
     ref: "User",
   },
   comments: [commentSchema],
+  url: {
+    type: String,
+    trim: true,
+  }
 });
 
 const Achievement = model("Achievement", achievementSchema);

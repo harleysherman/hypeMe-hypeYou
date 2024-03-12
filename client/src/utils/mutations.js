@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -25,13 +25,12 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_ACHIEVEMENT = gql`
-  mutation addAchievement($achievementText: String!) {
-    addAchievement(achievementText: $achievementText) {
+  mutation addAchievement($titleAchievement: String!, $body: String!) {
+    addAchievement(titleAchievement: $titleAchievement, body: $body) {
       _id
       titleAchievement
       body
       createdAt
-      user
       comments {
         commentBody
         username
@@ -41,11 +40,54 @@ export const ADD_ACHIEVEMENT = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($achievementId: ID!, $commentText: String!) {
-    addComment(achievementId: $achievementId, commentText: $commentText) {
+  mutation addComment(
+    $achievementId: ID!
+    $commentBody: String!
+    $username: String!
+  ) {
+    addComment(
+      achievementId: $achievementId
+      commentBody: $commentBody
+      username: $username
+    ) {
       _id
-      commentBody
+      titleAchievement
+      body
+      createdAt
+      url
+      user {
+        _id
+        username
+        profilePic
+      }
+      comments {
+        _id
+        commentBody
+        username
+        createdAt
+      }
+    }
+  }
+`;
+
+export const ADD_PROFILE_PIC = gql`
+  mutation addProfilePic($profilePic: String) {
+    addProfilePic(profilePic: $profilePic) {
+      _id
       username
+      email
+      profilePic
+    }
+  }
+`;
+
+export const ADD_ACHIEVEMENT_PHOTO = gql`
+  mutation addAchievementPhoto($achievementId: ID!, $url: String) {
+    addAchievementPhoto(achievementId: $achievementId, url: $url) {
+      _id
+      titleAchievement
+      url
+      body
       createdAt
     }
   }
