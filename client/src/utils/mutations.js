@@ -7,17 +7,6 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        email
-        achievements
-        communities {
-          users
-          category
-        }
-        comments {
-          commentBody
-          username
-          createdAt
-        }
       }
     }
   }

@@ -45,6 +45,7 @@ type Comment{
     achievements: [Achievement]
     user(username: String!): User
     achievement(username: String!): Achievement
+    me: User
   }
 
   type Mutation{
