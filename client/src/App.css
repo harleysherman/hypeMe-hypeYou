@@ -40,3 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+.full-viewport {
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+}
+.timeline{
+  width: 60vw;
+  height: 50px:
+}
+.forms{
+  width: 25vw;
+  justify-content: center;
+}
+.profile-username{
+ justify-content: left;
+}
+.achievementPost{
+    width: 75vw;
+  height: 50vw:
+
+}

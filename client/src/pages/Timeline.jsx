@@ -51,12 +51,15 @@ export default function Timeline() {
   // if(!loading){setAchievements(timelineArray(achievements))}
 
   return (
-    <Stack gap={3}>
-      <div style={{ width: "500px", height: "400px" }}>
-        <Chrono items={items} mode="VERTICAL" />
-      </div>
-      <AchievementForm />
-      {/* <div>
+    <div className="full-viewport">
+      <Stack gap={3}>
+          <div className="achievementPost" ><AchievementForm /></div>
+        <div className="timeline">
+          <Chrono scrollable="true" items={items} mode="VERTICAL" />
+        </div>
+      
+        
+        {/* <div>
         <Form.Label htmlFor="inputPost">Post your Achievement</Form.Label>
         <Form.Control
           type="Input"
@@ -74,6 +77,8 @@ export default function Timeline() {
           placeholder=" Post your Achievement Here"
         ></Form.Text>
       </div> */}
-    </Stack>
+      </Stack>
+    </div>
+    
   );
 }

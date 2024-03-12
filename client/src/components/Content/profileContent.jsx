@@ -7,7 +7,7 @@ const profileContent = (profile) => {
   console.log(profile);
   return profile.achievements.map((achievement) => (
     // eslint-disable-next-line react/jsx-key
-    <Card style={{ width: "38rem" }}>
+    <Card style={{ width: "50%" }}>
       <Card.Body>
         <Card.Title>{achievement.titleAchievement}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">

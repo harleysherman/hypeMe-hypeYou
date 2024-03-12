@@ -41,53 +41,70 @@ export default function Signup() {
     }
   };
   return (
-    <Container>
-      <Form onSubmit={submission}>
-        <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm="2">
-            Username
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control name= "username" value={signupState.username} onChange={handleChange} defaultValue="Username" />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-          <Form.Label column sm="2">
-            Email
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control
-            name = "email"
-            value = {signupState.email}
-              onChange={handleChange}
-              type="email"
-              defaultValue="email@example.com"
-            />
-          </Col>
-        </Form.Group>
+    <div className="full-viewport">
+      <div className="forms">
+        <Container>
+          <Form onSubmit={submission}>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label column sm="2">
+                Username
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control
+                  name="username"
+                  value={signupState.username}
+                  onChange={handleChange}
+                  defaultValue="Username"
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group
+              as={Row}
+              className="mb-3"
+              controlId="formPlaintextEmail"
+            >
+              <Form.Label column sm="2">
+                Email
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control
+                  name="email"
+                  value={signupState.email}
+                  onChange={handleChange}
+                  type="email"
+                  defaultValue="email@example.com"
+                />
+              </Col>
+            </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-          <Form.Label column sm="2">
-            Password
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control
-            name= "password"
-            value ={signupState.password}
-              onChange={handleChange}
-              type="password"
-              placeholder="Password"
-            />
-          </Col>
-        </Form.Group>
-        <button
-          className="btn btn-block btn-primary"
-          style={{ cursor: "pointer" }}
-          type="submit"
-        >
-          Signup
-        </button>
-      </Form>
-    </Container>
+            <Form.Group
+              as={Row}
+              className="mb-3"
+              controlId="formPlaintextPassword"
+            >
+              <Form.Label column sm="2">
+                Password
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control
+                  name="password"
+                  value={signupState.password}
+                  onChange={handleChange}
+                  type="password"
+                  placeholder="Password"
+                />
+              </Col>
+            </Form.Group>
+            <button
+              className="btn btn-block btn-primary"
+              style={{ cursor: "pointer" }}
+              type="submit"
+            >
+              Signup
+            </button>
+          </Form>
+        </Container>
+      </div>
+    </div>
   );
 }
