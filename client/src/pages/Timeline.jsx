@@ -4,12 +4,12 @@ import { Form } from "react-bootstrap";
 import timelineArray from "../components/Content/timelineContent";
 import { useQuery } from "@apollo/client";
 import { QUERY_ACHIEVEMENTS } from "../utils/queries";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 export default function Timeline() {
   // eslint-disable-next-line no-unused-vars
   const { loading, data, error } = useQuery(QUERY_ACHIEVEMENTS);
-  const [achievementList, setAchievements] = useState([]);
+  // const [achievementList, setAchievements] = useState([]);
   if (error) {
     console.log(error);
     return;
@@ -33,7 +33,7 @@ export default function Timeline() {
   return (
     <Stack gap={3}>
       <div style={{ width: "500px", height: "400px" }}>
-        {achievementList ? <Chrono items={items} mode="VERTICAL" /> : ""}
+        <Chrono items={items} mode="VERTICAL" />
       </div>
       <div>
         <Form.Label htmlFor="inputPost">Post your Achievement</Form.Label>

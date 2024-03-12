@@ -37,32 +37,35 @@ export const QUERY_ACHIEVEMENTS = gql`
   }
 `;
 
-export const QUERY_SINGLE_ACHIEVEMENT = gql`
-  query getSingleThought($achievementId: ID!) {
-    achievement(achievementId: $achievementId) {
-      _id
-      titleAchievement
-      body
-      username
-      comments {
-        commentBody
-        username
-      }
-    }
-  }
-`;
+// export const QUERY_SINGLE_ACHIEVEMENT = gql`
+//   query getSingleThought($achievementId: ID!) {
+//     achievement(achievementId: $achievementId) {
+//       _id
+//       titleAchievement
+//       body
+//       username
+//       comments {
+//         commentBody
+//         username
+//       }
+//     }
+//   }
+// `;
 
 export const QUERY_PROFILE = gql`
-  query profile {
-    profile {
-      _id
+  query Query($username: String!) {
+    user(username: $username) {
       username
       email
-      titleAchievement
-      body
-      comments {
-        commentBody
-        username
+      achievements {
+        titleAchievement
+        body
+        createdAt
+        comments {
+          commentBody
+          username
+          createdAt
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
-import { Stack } from "react-bootstrap";
-import { v4 as uuidv4 } from "uuid";
+// import { Stack } from "react-bootstrap";
+// import { v4 as uuidv4 } from "uuid";
 
 const timelineArray = (achievements) => {
   console.log(achievements);
