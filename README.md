@@ -37,17 +37,11 @@ Here's the Render link where the repo lives:
 
 Here are some screenshots of the app below:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![timeline](./client/src/assets/Screenshot1.png)
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![signup](./client/src/assets/Screenshot2.png)
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![achievements](./client/src/assets/Screenshot3.png)
 
 ## Credits
 
