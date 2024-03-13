@@ -56,7 +56,8 @@
  justify-content: left;
 }
 .achievementPost{
-    width: 75vw;
-  height: 50vw:
+  align-self: baseline ;
+    width: 50vw;
+
 
 }
