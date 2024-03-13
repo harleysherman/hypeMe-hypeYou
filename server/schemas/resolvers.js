@@ -26,7 +26,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       console.log(context);
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("achievements");
+        return await User.findOne({ _id: context.user._id }).populate("achievements");
       }
       throw AuthenticationError;
     },
