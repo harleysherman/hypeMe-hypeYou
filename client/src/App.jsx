@@ -34,9 +34,9 @@ function App() {
       <>
         <div className="  min-100-vh">
           <Header />
-          <div className="container">
+         
             <Outlet />
-          </div>
+         
         </div>
       </>
     </ApolloProvider>
