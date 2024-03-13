@@ -5,8 +5,6 @@ import Stack from "react-bootstrap/Stack";
 import { useQuery } from "@apollo/client";
 import { QUERY_ACHIEVEMENTS } from "../utils/queries";
 
-import AchievementForm from "../components/form/postForm";
-
 export default function Timeline() {
   // eslint-disable-next-line no-unused-vars
   const { loading, data, error } = useQuery(QUERY_ACHIEVEMENTS);
@@ -55,7 +53,6 @@ export default function Timeline() {
   return (
     <div className="full-viewport">
       <Stack gap={3}>
-          <div className="achievementPost" ><AchievementForm /></div>
         <div className="timeline">
           <Chrono scrollable="true" items={items} mode="VERTICAL" />
         </div>
