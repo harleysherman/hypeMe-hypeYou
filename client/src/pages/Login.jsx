@@ -27,6 +27,7 @@ const submission = async (event)=>{
     const {data} = await login({
       variables: {...loginState},
     })
+    console.log(data);
     Authentication.login(data.login.token);
   } catch (e) {
     console.log(e);

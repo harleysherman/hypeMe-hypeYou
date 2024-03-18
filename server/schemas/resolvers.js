@@ -42,12 +42,14 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
+        console.log("User not working");
         throw AuthenticationError;
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
+        console.log("Password not working");
         throw AuthenticationError;
       }
 
@@ -154,7 +156,17 @@ const resolvers = {
         );
       //}
       //throw AuthenticationError;
-    },
+    },  
+    updateAchievement: async (_, { achievementId, titleAchievement, achievementBody }, context) => {
+      if (context.user) {
+        return Achievement.findOneAndUpdate(
+          { _id: achievementId },
+          { titleAchievement, body: achievementBody },
+          { new: true }
+        )
+      } 
+      throw AuthenticationError;
+    }
   },
 };
 

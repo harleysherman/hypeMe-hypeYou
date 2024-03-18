@@ -58,6 +58,7 @@ type Comment{
     removeComment(commentId: ID, achievementId: ID): Achievement
     addProfilePic(profilePic: String): User
     addAchievementPhoto(achievementId: ID!, url: String): Achievement
+    updateAchievement(achievementId: ID!, titleAchievement: String, achievementBody: String): Achievement
   }
 `;
 
